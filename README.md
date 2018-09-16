@@ -1,2 +1,2 @@
 # FullStackOpen
-Full stack open tehtävät
+Full stack open -tehtävät
