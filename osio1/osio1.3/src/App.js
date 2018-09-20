@@ -7,14 +7,9 @@ class App extends Component {
       hyvä: 1,
       neutraali: 0,
       huono: 0,
-      counter: 12
+      counter: 0
     }
   }
-  asetaArvoon = (arvo) =>
-  () => {
-    this.setState({ counter: arvo })
-
-}
   nostaYhdellaHyvä = () =>
   () => {
     this.setState({hyvä : this.state.hyvä + 1 })
@@ -56,9 +51,9 @@ class App extends Component {
     );
   }
 }
-const Display = (props) => {
+const Display = ({counter, text}) => {
   return (
-    <div>{props.text} {props.counter}</div>
+    <div>{text} {counter}</div>
   )
 }
 const Button = ({ handleClick, text }) => (
