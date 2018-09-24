@@ -4,7 +4,8 @@ import ReactDOM from 'react-dom';
 
 
 export const Statistic = ({stat, text, text2}) => {
-  return (
-    <tr><td>{text}</td> <td>{stat}</td> <td>{text2}</td></tr>
-  )
+  return (text2 == null)
+  ? <tr><td>{text}</td><td>{stat}</td></tr>
+  : <tr><td>{text}</td><td>{stat}</td><td>{text2}</td></tr>
+
 }

@@ -54,7 +54,9 @@ laskeProsentti = (ct, hyväCount) => {
 
     return (
     <div>
+
         <Head text = "Anna palautetta:"/>
+
         <table>
         <tbody>
         <tr>
@@ -76,8 +78,8 @@ laskeProsentti = (ct, hyväCount) => {
         <tr><td>
         <Head text = "Statistiikka:"/>
         </td></tr>
+        </tbody>
           <Statistics app = {this}/>
-          </tbody>
           </table>
 
         </div>
@@ -92,16 +94,16 @@ const statistiikka = {
 }
 const Statistics = ({app}) => {
   return app.state.counter == 0
-  ? (<tr><td> Ei yhtään palautetta annettu. </td></tr>)
+  ? (<tbody><tr><td> Ei yhtään palautetta annettu. </td></tr></tbody>)
   : (
-    <div>
+    <tbody>
     <Statistic stat = {app.state.hyvä} text="Hyviä: "/>
     <Statistic stat = {app.state.neutraali} text="Neutraaleja: "/>
     <Statistic stat = {app.state.huono} text="Huonoja: "/>
     <Statistic stat = {app.laskeKeskiarvo(app.state.counter, app.state.yhteensa)} text="Keskiarvo: "/>
     <Statistic stat = {app.laskeProsentti(app.state.counter, app.state.hyvä)} text="Positiivisia " text2=" %"/>
     <Statistic stat = {app.state.counter} text="Yhteensa " text2=" ääntä"/>
-    </div>
+    </tbody>
   )
 }
 const Head = ({text}) => {
