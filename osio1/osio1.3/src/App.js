@@ -56,7 +56,9 @@ laskeProsentti = (ct, hyväCount) => {
     <div>
         <Head text = "Anna palautetta:"/>
         <table>
+        <tbody>
         <tr>
+        <td>
       <Button
         handleClick={this.nostaYhdellaHyvä()}
         text="Hyvä"
@@ -69,11 +71,13 @@ laskeProsentti = (ct, hyväCount) => {
         handleClick={this.nostaYhdellaHuono()}
         text="Huono"
         />
+        </td>
         </tr>
-        <tr>
+        <tr><td>
         <Head text = "Statistiikka:"/>
-        </tr>
+        </td></tr>
           <Statistics app = {this}/>
+          </tbody>
           </table>
 
         </div>
@@ -88,7 +92,7 @@ const statistiikka = {
 }
 const Statistics = ({app}) => {
   return app.state.counter == 0
-  ? (<tr> Ei yhtään palautetta annettu. </tr>)
+  ? (<tr><td> Ei yhtään palautetta annettu. </td></tr>)
   : (
     <div>
     <Statistic stat = {app.state.hyvä} text="Hyviä: "/>
