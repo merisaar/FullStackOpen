@@ -36,13 +36,7 @@ class App extends Component {
       counter: this.state.counter + 1,
       yhteensa: this.state.yhteensa - 1 })
 }
-  nostaYhdellaHuono = () =>
-  () => {
-    this.setState({
-      huono : this.state.huono + 1,
-      counter: this.state.counter + 1,
-      yhteensa: this.state.yhteensa - 1 })
-}
+
 laskeKeskiarvo = (ct, yht) => {
   return ct === 0
   ? 0
@@ -61,6 +55,8 @@ laskeProsentti = (ct, hyväCount) => {
     return (
     <div>
         <Head text = "Anna palautetta:"/>
+        <table>
+        <tr>
       <Button
         handleClick={this.nostaYhdellaHyvä()}
         text="Hyvä"
@@ -73,17 +69,26 @@ laskeProsentti = (ct, hyväCount) => {
         handleClick={this.nostaYhdellaHuono()}
         text="Huono"
         />
-          <Head text = "Statistiikka:"/>
+        </tr>
+        <tr>
+        <Head text = "Statistiikka:"/>
+        </tr>
           <Statistics app = {this}/>
+          </table>
 
         </div>
 
     )
   }
 }
+const statistiikka = {
+  hyvä: 0,
+  neutraali: 0,
+  huono: 0
+}
 const Statistics = ({app}) => {
   return app.state.counter == 0
-  ? (<div> Ei yhtään palautetta annettu. </div>)
+  ? (<tr> Ei yhtään palautetta annettu. </tr>)
   : (
     <div>
     <Statistic stat = {app.state.hyvä} text="Hyviä: "/>

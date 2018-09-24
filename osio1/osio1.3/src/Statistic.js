@@ -5,6 +5,6 @@ import ReactDOM from 'react-dom';
 
 export const Statistic = ({stat, text, text2}) => {
   return (
-    <div>{text} {stat} {text2}</div>
+    <tr><td>{text}</td> <td>{stat}</td> <td>{text2}</td></tr>
   )
 }
