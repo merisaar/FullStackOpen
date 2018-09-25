@@ -6,9 +6,10 @@ class App extends Component {
   constructor(){
     super()
     this.state = {
-      hyvä: 0,
-      neutraali: 0,
-      huono: 0,
+        // hyvä: 0,
+        neutraali: 0,
+        huono: 0,
+      stats: {   hyvä:0, neutraali:0, huono:0 },
       counter: 0,
       yhteensa: 0
     }
@@ -51,6 +52,23 @@ laskeProsentti = (ct, hyväCount) => {
 
 
   render() {
+    const statsCopy = {...this.state.stats}
+    const nostaYhdella = (select, yht) =>
+    () => {
+      let yht = 0
+      if(select === 'hyvä'){
+        yht = 1
+      }else if(select === 'huono'){
+        yht = -1
+      }
+      console.log(this.state.yhteensa)
+      statsCopy[select] = this.state.stats[select] + 1
+      this.setState({
+        stats: statsCopy,
+        counter: this.state.counter + 1,
+        yhteensa: yht
+      })
+  }
 
     return (
     <div>
@@ -61,15 +79,15 @@ laskeProsentti = (ct, hyväCount) => {
         </td></tr>
         <tr><td>
       <Button
-        handleClick={this.nostaYhdellaHyvä()}
+        handleClick={nostaYhdella('hyvä')}
         text="Hyvä"
         />
       <Button
-        handleClick={this.nostaYhdellaNeutraali()}
+        handleClick={nostaYhdella('neutraali')}
         text="Neutraali"
         />
       <Button
-        handleClick={this.nostaYhdellaHuono()}
+        handleClick={nostaYhdella('huono')}
         text="Huono"
         />
         </td></tr>
@@ -85,21 +103,16 @@ laskeProsentti = (ct, hyväCount) => {
     )
   }
 }
-const statistiikka = {
-  hyvä: 0,
-  neutraali: 0,
-  huono: 0
-}
 const Statistics = ({app}) => {
-  return app.state.counter == 0
+  return app.state.counter === 0
   ? (<tbody><tr><td> Ei yhtään palautetta annettu. </td></tr></tbody>)
   : (
     <tbody>
-    <Statistic stat = {app.state.hyvä} text="Hyviä: "/>
-    <Statistic stat = {app.state.neutraali} text="Neutraaleja: "/>
-    <Statistic stat = {app.state.huono} text="Huonoja: "/>
+    <Statistic stat = {app.state.stats['hyvä']} text="Hyviä: "/>
+    <Statistic stat = {app.state.stats['neutraali']} text="Neutraaleja: "/>
+    <Statistic stat = {app.state.stats['huono']} text="Huonoja: "/>
     <Statistic stat = {app.laskeKeskiarvo(app.state.counter, app.state.yhteensa)} text="Keskiarvo: "/>
-    <Statistic stat = {app.laskeProsentti(app.state.counter, app.state.hyvä)} text="Positiivisia " text2=" %"/>
+    <Statistic stat = {app.laskeProsentti(app.state.counter, app.state.stats['hyvä'])} text="Positiivisia " text2=" %"/>
     <Statistic stat = {app.state.counter} text="Yhteensa " text2=" ääntä"/>
     </tbody>
   )
