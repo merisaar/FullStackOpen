@@ -6,37 +6,37 @@ class App extends Component {
   constructor(){
     super()
     this.state = {
-        // hyvä: 0,
-        neutraali: 0,
-        huono: 0,
+      // hyvä:0,
+      // neutraali:0,
+      // huono:0,
       stats: {   hyvä:0, neutraali:0, huono:0 },
       counter: 0,
       yhteensa: 0
     }
   }
-  nostaYhdellaHyvä = () =>
-  () => {
-    this.setState({
-      hyvä : this.state.hyvä + 1,
-      counter: this.state.counter + 1,
-      yhteensa: this.state.yhteensa + 1
-    })
-}
-  nostaYhdellaNeutraali = () =>
-  () => {
-    this.setState({
-      neutraali :this.state.neutraali + 1,
-      counter: this.state.counter + 1,
-      yhteensa: this.state.yhteensa + 0
-    })
-}
-  nostaYhdellaHuono = () =>
-  () => {
-    this.setState({
-      huono : this.state.huono + 1,
-      counter: this.state.counter + 1,
-      yhteensa: this.state.yhteensa - 1 })
-}
+//   nostaYhdellaHyvä = () =>
+//   () => {
+//     this.setState({
+//       hyvä : this.state.hyvä + 1,
+//       counter: this.state.counter + 1,
+//       yhteensa: this.state.yhteensa + 1
+//     })
+// }
+//   nostaYhdellaNeutraali = () =>
+//   () => {
+//     this.setState({
+//       neutraali :this.state.neutraali + 1,
+//       counter: this.state.counter + 1,
+//       yhteensa: this.state.yhteensa + 0
+//     })
+// }
+//   nostaYhdellaHuono = () =>
+//   () => {
+//     this.setState({
+//       huono : this.state.huono + 1,
+//       counter: this.state.counter + 1,
+//       yhteensa: this.state.yhteensa - 1 })
+// }
 
 laskeKeskiarvo = (ct, yht) => {
   return ct === 0
@@ -66,7 +66,7 @@ laskeProsentti = (ct, hyväCount) => {
       this.setState({
         stats: statsCopy,
         counter: this.state.counter + 1,
-        yhteensa: yht
+        yhteensa: this.state.yhteensa + yht
       })
   }
 
