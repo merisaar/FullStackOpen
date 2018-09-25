@@ -1,8 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {Otsikko} from './otsikko.js'
-import {Sisalto} from './sisalto.js'
-import {Yhteensa} from './yhteensa.js'
+import {Otsikko} from './components/otsikko.js'
+import {Sisalto} from './components/sisalto.js'
+import {Yhteensa} from './components/yhteensa.js'
 
 //Tehtävä 1.3
 // const App = () => {

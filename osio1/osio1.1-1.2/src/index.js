@@ -1,8 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {Otsikko} from './otsikko.js'
-import {Sisalto} from './sisalto.js'
-import {Yhteensa} from './yhteensa.js'
+import {Otsikko} from './components/otsikko'
+import {Sisalto} from './components/sisalto.js'
+import {Yhteensa} from './components/yhteensa.js'
 
 const App = () => {
   const kurssi = 'Half Stack -sovelluskehitys'
