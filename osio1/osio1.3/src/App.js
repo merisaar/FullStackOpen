@@ -54,13 +54,12 @@ laskeProsentti = (ct, hyväCount) => {
 
     return (
     <div>
-
+    <table>
+    <tbody>
+    <tr><td>
         <Head text = "Anna palautetta:"/>
-
-        <table>
-        <tbody>
-        <tr>
-        <td>
+        </td></tr>
+        <tr><td>
       <Button
         handleClick={this.nostaYhdellaHyvä()}
         text="Hyvä"
@@ -73,8 +72,7 @@ laskeProsentti = (ct, hyväCount) => {
         handleClick={this.nostaYhdellaHuono()}
         text="Huono"
         />
-        </td>
-        </tr>
+        </td></tr>
         <tr><td>
         <Head text = "Statistiikka:"/>
         </td></tr>
