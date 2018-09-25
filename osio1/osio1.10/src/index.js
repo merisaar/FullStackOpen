@@ -15,12 +15,22 @@ class App extends React.Component {
       const min = 0;
       const max = 5;
       let rand =Math.floor(Math.random() * Math.floor(max));
-      (rand == this.state.selected) ? rand=Math.floor(this.state.selected/2)+2 : console.log('Ei osunu')
+      if(rand == this.state.selected) {rand=Math.floor(this.state.selected/2)+2}
       // rand == this.state.selected
       this.setState({
         selected: rand
       })
 
+  }
+  mostVotes = (list) =>
+    {
+      let largest = 0;
+      let index = 0;
+      for(let point in list){
+          if(list[point]>largest ){
+          (largest=list[point], index = point)}
+      }
+      return index
   }
 
   render() {
@@ -34,22 +44,31 @@ class App extends React.Component {
     }
     return (
       <div>
+
       <div>
       {this.props.anecdotes[this.state.selected]}
       </div>
+
       <div>
       {this.state.points[this.state.selected]} votes
       </div>
+
       <br/>
+      <div>
         <Button handleClick = {vote(this.state.selected)} text ='Vote'/>
         <Button handleClick = {this.randomizeAnecdote()} text ='Next anecdote'/>
       </div>
+      <br/>
+
+      <div>
+        <b>Anecdotes with most votes:</b>
+      </div>
+        <BestAnecdote anecdote={this.props.anecdotes[this.mostVotes(this.state.points)]} anecdotePoints = {this.state.points[this.mostVotes(this.state.points)]}/>
+      </div>
+
     )
   }
 }
-// const points = {
-//   0:0,  1:0,  2:0,  3:0,  4:0,  5:0
-// }
 const anecdotes = [
   'If it hurts, do it more often',
   'Adding manpower to a late software project makes it later!',
@@ -63,6 +82,16 @@ const Button = ({ handleClick, text }) => (
     <button onClick={handleClick}>
       {text}
       </button>
+)
+const BestAnecdote = ({anecdote, anecdotePoints}) => (
+    <div>
+    <div>
+      {anecdote}
+      </div>
+      <div>
+      has {anecdotePoints} votes
+      </div>
+      </div>
 )
 
 ReactDOM.render(
